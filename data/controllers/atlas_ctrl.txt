@@ -1,0 +1,258 @@
+{
+	"UpdateRate": 30,
+	"EnablePhaseInput": true,
+	"RecordWorldRootPos": false,
+	"RecordWorldRootRot": true,
+
+	"PDControllers":
+	[
+		{
+			"ID": 0,
+			"Name": "root",
+			"Kp": 0,
+			"Kd": 0,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 1,
+			"Name": "back_bkz",
+			"Kp": 2500,
+			"Kd": 250,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 2,
+			"Name": "back_bky",
+			"Kp": 2500,
+			"Kd": 250,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 3,
+			"Name": "back_bkx",
+			"Kp": 2500,
+			"Kd": 250,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 4,
+			"Name": "neck_ry",
+			"Kp": 100,
+			"Kd": 10,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 5,
+			"Name": "l_arm_shz",
+			"Kp": 400,
+			"Kd": 40,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 6,
+			"Name": "l_arm_shx",
+			"Kp": 400,
+			"Kd": 40,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 7,
+			"Name": "l_arm_ely",
+			"Kp": 300,
+			"Kd": 30,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 8,
+			"Name": "l_arm_elx",
+			"Kp": 300,
+			"Kd": 30,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 9,
+			"Name": "l_arm_wry",
+			"Kp": 100,
+			"Kd": 10,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 10,
+			"Name": "l_arm_wrx",
+			"Kp": 100,
+			"Kd": 10,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 11,
+			"Name": "l_arm_wry2",
+			"Kp": 50,
+			"Kd": 5,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 12,
+			"Name": "r_arm_shz",
+			"Kp": 400,
+			"Kd": 40,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 13,
+			"Name": "r_arm_shx",
+			"Kp": 300,
+			"Kd": 30,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 14,
+			"Name": "r_arm_ely",
+			"Kp": 300,
+			"Kd": 30,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 15,
+			"Name": "r_arm_elx",
+			"Kp": 300,
+			"Kd": 30,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 16,
+			"Name": "r_arm_wry",
+			"Kp": 100,
+			"Kd": 10,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 17,
+			"Name": "r_arm_wrx",
+			"Kp": 100,
+			"Kd": 10,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 18,
+			"Name": "r_arm_wry2",
+			"Kp": 50,
+			"Kd": 5,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 19,
+			"Name": "l_leg_hpz",
+			"Kp": 1000,
+			"Kd": 100,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 20,
+			"Name": "l_leg_hpx",
+			"Kp": 1000,
+			"Kd": 100,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 21,
+			"Name": "l_leg_hpy",
+			"Kp": 1000,
+			"Kd": 100,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 22,
+			"Name": "l_leg_kny",
+			"Kp": 900,
+			"Kd": 90,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 23,
+			"Name": "l_leg_aky",
+			"Kp": 800,
+			"Kd": 80,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 24,
+			"Name": "l_leg_akx",
+			"Kp": 800,
+			"Kd": 80,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 25,
+			"Name": "r_leg_hpz",
+			"Kp": 1000,
+			"Kd": 100,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 26,
+			"Name": "r_leg_hpx",
+			"Kp": 1000,
+			"Kd": 100,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 27,
+			"Name": "r_leg_hpy",
+			"Kp": 1000,
+			"Kd": 100,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 28,
+			"Name": "r_leg_kny",
+			"Kp": 900,
+			"Kd": 90,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 29,
+			"Name": "r_leg_aky",
+			"Kp": 800,
+			"Kd": 80,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		},
+		{
+			"ID": 30,
+			"Name": "r_leg_akx",
+			"Kp": 800,
+			"Kd": 80,
+			"TargetTheta0": 0,
+			"UseWorldCoord": 0
+		}
+	]
+}
