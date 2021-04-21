@@ -63,12 +63,10 @@ class PyBulletEngine(SimEngine):
         useFixedBase=False, flags=flags)
     elif self._model_name == "atlas":
       self._sim_model = self._pybullet_client.loadURDF(
-        "./data/urdf/atlas/atlas_customize.urdf", [0,0,0.929],
+        "./data/urdf/atlas/atlas.urdf", [0,0,0.929],
         useFixedBase=False, flags=flags)
-    elif self._model_name == "atlas_jason":
-      self._sim_model = self._pybullet_client.loadURDF(
-        "./data/urdf/atlas/atlas_jason.urdf", [0,0,0.929],
-        useFixedBase=False, flags=flags)
+    else:
+      raise NotImplementedError
 
     self._pybullet_client.changeDynamics(self._sim_model, -1, lateralFriction=0.9)
     for j in range (self._pybullet_client.getNumJoints(self._sim_model)):

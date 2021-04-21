@@ -1,0 +1,10 @@
+{
+  "env_name": "spacetime",
+  "env_args":
+  {
+    "task": "walk",
+    "model": "atlas",
+    "self_collision": false,
+    "bound": "data/bounds/atlas_tight_bound.txt"
+  }
+}

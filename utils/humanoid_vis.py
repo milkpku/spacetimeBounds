@@ -48,7 +48,7 @@ class HumanoidVis(object):
         useFixedBase=True, flags=self._pybullet_client.URDF_MAINTAIN_LINK_ORDER)
     elif self._model == "atlas":
       kin_model = self._pybullet_client.loadURDF(
-        "atlas/atlas_customize.urdf", [0,0,0],
+        "atlas/atlas.urdf", [0,0,0],
         useFixedBase=True, flags=self._pybullet_client.URDF_MAINTAIN_LINK_ORDER)
     else:
       raise NotImplementedError
