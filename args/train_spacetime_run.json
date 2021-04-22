@@ -14,7 +14,7 @@
     "use_global_root_ori": true,
     "heading_vec": [1, 0, 0],
     "use_spacetime_bounds": true,
-    "bound": "../data/bounds/default_tight.txt",
+    "bound": "data/bounds/default_tight.txt",
     "rel_root_pos": false,
     "rel_root_ori": false,
     "rel_endeffector": true
@@ -22,12 +22,14 @@
 
   "model_args":
   {
+    "noise": 0.1,
     "with_ffc": true
   },
 
-  "trian_args":
+  "train_args":
   {
     "iter_num": 6000,
+    "gamma": 0.95,
     "use_importance_sampling": true,
     "num_segments": 10,
     "use_state_evolution": false

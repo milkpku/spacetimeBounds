@@ -8,7 +8,7 @@ def init_model(env, model_args, ckpt=None):
   a_dim = env.get_action_size()
   a_min = env.a_min
   a_max = env.a_max
-  a_noise = args.noise * np.ones(a_dim)
+  a_noise = model_args["noise"] * np.ones(a_dim)
 
   # get reference memory for FFC
   ref_mem = env._mocap.get_ref_mem()
@@ -51,7 +51,7 @@ if __name__=="__main__":
   num_cpu = multiprocessing.cpu_count()
   parser = argparse.ArgumentParser()
   # training args
-  parser.add_argument("--arg_file", type=str, help="arg file for training")
+  parser.add_argument("arg_file", type=str, help="arg file for training")
   # training
   parser.add_argument("--id", type=str, default="spacetime_test", help="experiment id")
   parser.add_argument("--iters", type=int, default=None, help="number of iterations, use arg_file if not set")
@@ -69,8 +69,8 @@ if __name__=="__main__":
   model_args = file_args["model_args"]
   train_args = file_args["train_args"]
 
-  from env import make_env, make_env_vec
-  vec_env = make_env_vec(env_name, env_args, args.workers)
+  from env import make_env, make_vec_env
+  vec_env = make_vec_env(env_name, env_args, args.workers)
 
   test_env = make_env(env_name, env_args)
   s_norm, actor, critic = init_model(test_env, model_args, args.ckpt)

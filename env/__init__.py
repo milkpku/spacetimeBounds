@@ -30,7 +30,7 @@ def make_vec_env(env_name, env_args, env_num):
 
   env_class = env_dict[env_name]
   import numpy as np
-  random_seeds = np.random.randint(1000, env_name)
+  random_seeds = np.random.randint(0, 10000, env_num)
   vec_env = SubprocVecEnv([lambda : env_class(seed=x, **env_args) for x in random_seeds])
 
   return vec_env
