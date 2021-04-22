@@ -7,7 +7,7 @@ class SpacetimeBoundsEnv(BaseEnv):
   def __init__(self,
           use_global_root_ori=True,
           heading_vec=[1, 0, 0],
-          use_state_lim=True,
+          use_spacetime_bounds=True,
           bound="data/bounds/default_new_bound.txt",
           rel_root_pos=True,
           rel_root_ori=True,
@@ -21,7 +21,7 @@ class SpacetimeBoundsEnv(BaseEnv):
     self._use_global_root_ori = use_global_root_ori
 
     # motion bound
-    self._use_state_lim = use_state_lim
+    self._use_spacetime_bounds = use_spacetime_bounds
     self._bound = build_motion_bound(bound)
     self._rel_root_pos = rel_root_pos
     self._rel_root_ori = rel_root_ori
@@ -100,13 +100,13 @@ class SpacetimeBoundsEnv(BaseEnv):
             "valid_episode": self.check_valid_episode(),
             "start_phase": self.start_phase,
             "wrap_end": self.check_wrap_end(),
-            "bound": self.check_state_diff(),
+            "bound": self.check_spacetime_bounds(),
             "pose": self.get_reset_data(),
             "trust_rwd": True,
             }
     if info["bound"]:
       # record active channel of motion bound
-      info["bound_active"] = self.check_state_diff_active_group()
+      info["bound_active"] = self.check_spacetime_bounds_active_group()
     return info
 
   def post_update(self):
@@ -138,14 +138,14 @@ class SpacetimeBoundsEnv(BaseEnv):
 
   def check_terminate(self):
     if self._mode == 0:  # training mode
-      return self.check_state_diff()
+      return self.check_spacetime_bounds()
     elif self._mode == 1: # test mode
       return self._contact_ground
     else:
       assert(False and "not supported mode")
 
-  def check_state_diff(self):
-    if not self._use_state_lim or self._mode==1:
+  def check_spacetime_bounds(self):
+    if not self._use_spacetime_bounds or self._mode==1:
       return False
 
     curr_sim_pose = self._curr_sim_pose
@@ -161,10 +161,10 @@ class SpacetimeBoundsEnv(BaseEnv):
     return self._skeleton.check_state_diff(curr_sim_pose, curr_kin_pose,
             self._rel_root_pos, self._rel_root_ori, self._rel_endeffector)
 
-  def check_state_diff_active_group(self):
+  def check_spacetime_bounds_active_group(self):
     """ return list of active joints which break motion bound
     """
-    if not self._use_state_lim or self._mode==1:
+    if not self._use_spacetime_bounds or self._mode==1:
       return False
 
     curr_sim_pose = self._curr_sim_pose.copy()

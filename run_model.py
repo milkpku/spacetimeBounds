@@ -177,8 +177,8 @@ def test_model(env, model, select_set=None, record=False, random=True):
 if __name__=="__main__":
   import argparse
   parser = argparse.ArgumentParser()
-  parser.add_argument("--arg_file", type=str, help="arg file that specifies the environment and training parameters")
-  parser.add_argument("--ckpt", type=str, help="checkpoint that stores trained model")
+  parser.add_argument("--argfile", type=str, help="arg file that specifies the environment and training parameters")
+  parser.add_argument("--ckpt", type=str, default=None, help="checkpoint that stores trained model")
   parser.add_argument("--record", action="store_true")
   parser.add_argument("--random", action="store_true")
   args = parser.parse_args()
@@ -186,7 +186,7 @@ if __name__=="__main__":
   # load env
   import json
   from env import make_env
-  file_args = json.load(open(args.arg_file))
+  file_args = json.load(open(args.argfile))
   env_name = file_args["env_name"]
   env_args = file_args["env_args"]
   env_args["enable_draw"] = True
@@ -195,9 +195,17 @@ if __name__=="__main__":
   # load model
   import torch
   from model import load_FDM
-  model = load_FDM(args.ckpt)
+  ckpt = args.ckpt
+  if args.ckpt:
+    ckpt = args.ckpt
+  elif "ckpt" in file_args:
+    ckpt = file_args["ckpt"]
+  else:
+    print("please specify checkpoint")
+    assert(False)
 
-  data = torch.load(args.ckpt)
+  model = load_FDM(ckpt)
+  data = torch.load(ckpt)
   if "select_set" in data.keys():
     select_set = data["select_set"]
     test_model(test_env, model, select_set, args.record, args.random)
