@@ -155,7 +155,7 @@ class SpacetimeBoundsEnv(BaseEnv):
     pose[:3] += count * self._mocap._cyc_offset
     curr_kin_pose = pose
 
-    bound = self._bound.slerp(self.curr_phase)
+    bound = self._bound.interp(self.curr_phase)
     self._skeleton.set_state_diff_lim(bound)
 
     return self._skeleton.check_state_diff(curr_sim_pose, curr_kin_pose,
@@ -174,7 +174,7 @@ class SpacetimeBoundsEnv(BaseEnv):
     pose[:3] += count * self._mocap._cyc_offset
     curr_kin_pose = pose
 
-    bound = self._bound.slerp(self.curr_phase)
+    bound = self._bound.interp(self.curr_phase)
     self._skeleton.set_state_diff_lim(bound)
 
     status_vec = self._skeleton.check_state_diff_vec(curr_sim_pose, curr_kin_pose, self._rel_root_pos, self._rel_root_ori, self._rel_endeffector)

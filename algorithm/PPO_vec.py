@@ -98,13 +98,14 @@ def PPO_vec(actor, critic, s_norm, vec_env, exp_id,
 
   actor_optim = optim.SGD(actor.parameters(), actor_lr, momentum=actor_momentum, weight_decay=actor_wdecay)
   critic_optim = optim.SGD(critic.parameters(), critic_lr, momentum=critic_momentum, weight_decay=critic_wdecay)
+  exp_rate = 1.0
 
   # set up environment and data generator
   runner_args = {
       "sample_size": sample_size,
       "gamma": gamma,
       "lam": lam,
-      "exp_rate": 1.0,
+      "exp_rate": exp_rate,
       "use_importance_sampling": use_importance_sampling,
       "num_segments": num_segments,
       "ckpt_sample_prob": ckpt_sample_prob,
@@ -140,8 +141,7 @@ def PPO_vec(actor, critic, s_norm, vec_env, exp_id,
     else:
       vec_env.set_task_t(MAX_T)
 
-    exp_rate = exp_rate_begin
-    runner.set_exp_rate(exp_rate)
+    # can update exp_rate by runner.set_exp_rate()
     data = runner.run()
     dataset = PPO_Dataset(data)
 
