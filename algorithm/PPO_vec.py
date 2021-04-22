@@ -100,10 +100,20 @@ def PPO_vec(actor, critic, s_norm, vec_env, exp_id,
   critic_optim = optim.SGD(critic.parameters(), critic_lr, momentum=critic_momentum, weight_decay=critic_wdecay)
 
   # set up environment and data generator
-  runner = RunnerGAE(vec_env, s_norm, actor, critic, sample_size, gamma, lam, exp_rate_begin,
-            use_importance_sampling=use_importance_sampling, sample_div=divs, ckpt_sample_prob=ckpt_sample_prob,
-            use_select_set=use_select_set, select_num=select_num, ckpt_select_set=ckpt_select_set,
-            use_gpu_model=use_gpu_model)
+  runner_args = {
+      "sample_size": sample_size,
+      "gamma": gamma,
+      "lam": lam,
+      "exp_rate": 1.0,
+      "use_importance_sampling": use_importance_sampling,
+      "num_segments": num_segments,
+      "ckpt_sample_prob": ckpt_sample_prob,
+      "use_state_evolution": use_state_evolution,
+      "num_selected_elite": num_selected_elite,
+      "ckpt_select_set": ckpt_select_set,
+      "use_gpu_model": use_gpu_model,
+  }
+  runner = RunnerGAE(vec_env, s_norm, actor, critic, **runner_args)
 
   # use estimated value from critic for end state in GAE calculation
   # when the episode/trajectory is interrupted rather than terminated
@@ -123,7 +133,7 @@ def PPO_vec(actor, critic, s_norm, vec_env, exp_id,
   anneal_sample = 0 #vec_env.annealing_sample
   for it in range(iter_num + 1):
     # sample data with gae estimated adv and vtarg
-    anneal_rate = np.clip(anneal_sample / anneal_samples, 0, 1)
+    anneal_rate = np.clip(anneal_sample / CURRIC_SAMPLES, 0, 1)
     if use_deepmimic_scheduling:
       t = map_samples_to_task_t(anneal_sample)
       vec_env.set_task_t(t)

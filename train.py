@@ -79,7 +79,7 @@ if __name__=="__main__":
   stamp = time.strftime("%Y-%b-%d-%H%M%S", time.localtime())
   exp_id = "%s-%s" % (args.id, stamp)
 
-  train_args["id"] = exp_id
+  train_args["exp_id"] = exp_id
   train_args["vec_env"] = vec_env
   if args.iters:
     train_args["iter_num"] = args.iters

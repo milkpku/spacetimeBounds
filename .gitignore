@@ -1,3 +1,4 @@
 build
 *.so
 __pycache__
+KinematicCore.py

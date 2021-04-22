@@ -72,22 +72,22 @@ class RunnerGAE:
     if use_importance_sampling:
       if ckpt_sample_prob is not None:
         self._div = len(ckpt_sample_prob)
-        self.importance_pool = SamplePool(sample_div, sample_gamma, sample_base, sample_tmp)
+        self.importance_pool = SamplePool(num_segments, sample_gamma, sample_base, sample_tmp)
         self.importance_pool._prob = ckpt_sample_prob
       else:
-        self._div = sample_div
-        self.importance_pool = SamplePool(sample_div, sample_gamma, sample_base, sample_tmp)
+        self._div = num_segments
+        self.importance_pool = SamplePool(num_segments, sample_gamma, sample_base, sample_tmp)
 
     # select set
-    self.use_select_set = use_select_set
-    if use_select_set:
+    self.use_state_evolution = use_state_evolution
+    if use_state_evolution:
       if ckpt_select_set is not None:
-        self.select_pool = SelectPool(self._div, select_num)
+        self.select_pool = SelectPool(self._div, num_selected_elite)
         self._select_delay = -1
         self.select_pool._state_val = ckpt_select_set["select_val"]
         self.select_pool._state = ckpt_select_set["select_set"]
       else:
-        self.select_pool = SelectPool(sample_div, select_num)
+        self.select_pool = SelectPool(num_segments, num_selected_elite)
         self._select_delay = select_delay
 
   def set_exp_rate(self, exp_rate):
@@ -109,7 +109,7 @@ class RunnerGAE:
       prob = np.ones(1)
 
     # use select set
-    if self.use_select_set and self.iter > self._select_delay:
+    if self.use_state_evolution and self.iter > self._select_delay:
       select_set = self.select_pool.get_select_set()
       noise_level = self.select_pool.get_noise_level()
     else:
@@ -139,7 +139,7 @@ class RunnerGAE:
       self.importance_pool.record(start_phase, start_val)
 
     # record for select set
-    if self.use_select_set:
+    if self.use_state_evolution:
       val = data["vtargs"]
       phase = data["obs"][:, 0]
       states = data["poses"]
@@ -475,7 +475,7 @@ class RunnerGAE:
   def save_info(self, data):
     if self.use_importance_sampling:
       data["importance"] = self.importance_pool._prob
-    if self.use_select_set and self.iter > self._select_delay:
+    if self.use_state_evolution and self.iter > self._select_delay:
       data["select_set"] = self.select_pool.get_select_set()
       data["select_val"] = self.select_pool._state_val
       data["val_var"] = self.select_pool.get_noise_level()
