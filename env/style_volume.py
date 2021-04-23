@@ -36,7 +36,6 @@ class StyleVolumeEnv(SpacetimeBoundsEnv):
     self._nodes = convex_nodes[nodes]
     self._scale = scale
     self._enlarge = enlarge
-    self._ws = ws
 
   def calc_volume(self):
     try:
