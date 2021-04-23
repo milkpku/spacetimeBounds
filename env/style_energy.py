@@ -3,7 +3,7 @@ import numpy as np
 from Kinematic import KinematicCore
 
 class StyleEnergyEnv(SpacetimeBoundsEnv):
-  def __init__(self, begin_energy=40, end_energy=60, ws=1.0, **kwargs):
+  def __init__(self, begin_energy=20, end_energy=100, **kwargs):
     """
         Initialize FDM0E environment
     """
@@ -14,7 +14,6 @@ class StyleEnergyEnv(SpacetimeBoundsEnv):
     self._low = begin_energy
     self._high = end_energy
     self._gap = end_energy - begin_energy
-    self._ws = ws
 
   def calc_reward(self):
     char = self._skeleton._kin_core.getCharacter()
@@ -22,10 +21,6 @@ class StyleEnergyEnv(SpacetimeBoundsEnv):
 
     rwd = (kin_energy - self._low) / self._gap
     rwd = np.clip(rwd, 0, 1)
-    #return kin_energy
-    if (self._ws != 1.0):
-      r_imit = super().calc_reward()
-      rwd = rwd * self._ws + r_imit * (1-self._ws)
     return rwd
 
 if __name__=="__main__":

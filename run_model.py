@@ -177,7 +177,7 @@ def test_model(env, model, select_set=None, record=False, random=True):
 if __name__=="__main__":
   import argparse
   parser = argparse.ArgumentParser()
-  parser.add_argument("--argfile", type=str, help="arg file that specifies the environment and training parameters")
+  parser.add_argument("argfile", type=str, help="arg file that specifies the environment and training parameters")
   parser.add_argument("--ckpt", type=str, default=None, help="checkpoint that stores trained model")
   parser.add_argument("--record", action="store_true")
   parser.add_argument("--random", action="store_true")

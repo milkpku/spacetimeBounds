@@ -26,14 +26,14 @@ convex_nodes = {
 }
 
 class StyleVolumeEnv(SpacetimeBoundsEnv):
-  def __init__(self, joint_nodes=convex_nodes["default"], scale=0.12, enlarge=True, ws=1.0, **kwargs):
+  def __init__(self, nodes="default", scale=0.12, enlarge=True, **kwargs):
     """
         Initialize FDM0E environment
     """
     super().__init__(**kwargs)
 
     # joints' weight for penalty
-    self._nodes = joint_nodes
+    self._nodes = convex_nodes[nodes]
     self._scale = scale
     self._enlarge = enlarge
     self._ws = ws
@@ -55,10 +55,6 @@ class StyleVolumeEnv(SpacetimeBoundsEnv):
       rwd = (1-r_diff) # encourage volume
     else:
       rwd = r_diff  # discourage volume
-
-    if (self._ws != 1.0):
-      r_imit = super().calc_reward()
-      rwd = rwd * self._ws + r_imit * (1-self._ws)
 
     return rwd
 
