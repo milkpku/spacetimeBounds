@@ -10,9 +10,9 @@ import numpy as np
 
 
 class StyleGramEnv(SpacetimeBoundsEnv):
-  def __init__(self, style, window=None, scale=0.03,
-               e_scale=4, ca_scale=4, a_scale=10,
-               at_scale=20, ay_scale=20,
+  def __init__(self, style, window=None, scale=0.06,
+               e_scale=4, ca_scale=20, a_scale=20,
+               at_scale=4, ay_scale=20,
                z_scale=2, cv_scale=4, cv_ratio=1,
                abs_acc=False, avoid_self=False,
                **kwargs):
@@ -34,7 +34,7 @@ class StyleGramEnv(SpacetimeBoundsEnv):
     char_file = "data/characters/humanoid3d_cmu.txt"
     ctrl_file = "data/controllers/humanoid3d_cmu_ctrl.txt"
     self._style_skeleton = HumanoidSkeleton(char_file, ctrl_file)
-    style_file = "data/style/humanoid3d_%s.txt" % style
+    style_file = "data/motions/humanoid3d_%s.txt" % style
     self._style_G = self.style_gram_matrix(style_file)
 
     # regularization
