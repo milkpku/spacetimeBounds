@@ -6,7 +6,7 @@
     "model": "humanoid3d",
     "engine": "pybullet",
     "contact": "walk",
-    "self_collision": true,
+    "self_collision": false,
     "enable_draw": false,
     "record_contact": false,
     "record_torques": false,
@@ -19,7 +19,8 @@
     "rel_root_ori": false,
     "rel_endeffector": true,
 
-    "style": "bent_walk"
+    "style": "bent_walk",
+    "window": 50
   },
 
   "model_args":
@@ -34,6 +35,7 @@
     "gamma": 0.95,
     "use_importance_sampling": true,
     "num_segments": 10,
-    "use_state_evolution": false
+    "use_state_evolution": true,
+    "num_selected_elite": 200
   }
 }
