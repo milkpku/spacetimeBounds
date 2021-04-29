@@ -2,10 +2,10 @@
   "env_name": "style_energy",
   "env_args":
   {
-    "task": "cartwheel",
+    "task": "dance_a",
     "model": "humanoid3d",
     "engine": "pybullet",
-    "contact": "cartwheel",
+    "contact": "walk",
     "self_collision": true,
     "enable_draw": false,
     "record_contact": false,
@@ -14,7 +14,7 @@
     "use_global_root_ori": true,
     "heading_vec": [1, 0, 0],
     "use_spacetime_bounds": true,
-    "bound": "data/bounds/cartwheel.txt",
+    "bound": "data/bounds/default_new_bound.txt",
     "rel_root_pos": false,
     "rel_root_ori": false,
     "rel_endeffector": true,
