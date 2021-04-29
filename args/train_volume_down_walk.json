@@ -21,7 +21,7 @@
 
     "nodes": "default",
     "scale": 0.12,
-    "enlarge": true
+    "enlarge": false
   },
 
   "model_args":
