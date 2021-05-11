@@ -120,7 +120,7 @@ class StyleGramEnv(SpacetimeBoundsEnv):
   def get_state_size(self):
     single_state = self._skeleton.build_state()
     # 1 dim for phase, 2 for additional x, z, 1 for sim state (which contains y)
-    state_size = 3 + single_state.size
+    state_size = 1 + single_state.size
     return state_size
 
   def style_distance(self):
@@ -231,12 +231,6 @@ class StyleGramEnv(SpacetimeBoundsEnv):
     phase = self.curr_phase % 1.0
 
     state = np.concatenate(([phase], sim_state))
-
-    pos = self._skeleton.get_joint_pos(0)
-    x_offset = 0
-    y_offset = pos[1]
-    z_offset = pos[2]
-    state = np.insert(state, (1, 2), (x_offset, z_offset))
 
     # get com velocity and body parts velocity
     vel = self.get_CoM_velocity()

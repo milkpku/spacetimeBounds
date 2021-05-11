@@ -208,6 +208,6 @@ if __name__=="__main__":
   data = torch.load(ckpt)
   if "select_set" in data.keys():
     select_set = data["select_set"]
-    test_model(test_env, model, select_set, args.record, args.random)
   else:
-    test_model(test_env, model, None, args.record, args.random)
+    select_set = None
+  test_model(test_env, model, select_set, args.record, args.random)
