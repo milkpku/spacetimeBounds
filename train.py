@@ -12,7 +12,7 @@ def init_model(env, model_args, ckpt=None):
 
   # get reference memory for FFC
   ref_mem = env._mocap.get_ref_mem()
-  if not model_args["with_ffc"] == "zero":
+  if not model_args["with_ffc"]:
     ref_mem.fill(0)
   ref_mem = ref_mem[:, 1:]  # no phase velocity
 
