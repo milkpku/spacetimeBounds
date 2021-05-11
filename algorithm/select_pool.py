@@ -1,7 +1,4 @@
 import numpy as np
-import cma
-
-from IPython import embed
 
 def select_by_boltzmann(val, num, beta=3):
   """ Select by bolzmann distribution

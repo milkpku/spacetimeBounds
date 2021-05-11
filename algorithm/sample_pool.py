@@ -1,5 +1,4 @@
 import numpy as np
-from IPython import embed
 
 class SamplePool:
   """
@@ -66,8 +65,6 @@ class SamplePool:
     self._prob = prob
 
 if __name__=="__main__":
-  from IPython import embed
-
   ##### test runable #####
   pool = SamplePool()
   phase = np.random.rand(200)
