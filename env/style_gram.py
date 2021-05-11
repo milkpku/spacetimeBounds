@@ -17,7 +17,7 @@ class StyleGramEnv(SpacetimeBoundsEnv):
                abs_acc=False, avoid_self=False,
                **kwargs):
     """
-        Initialize FDM0Gram environment
+        Initialize Gram matrix style transfer environment
     """
     super().__init__(**kwargs)
     if window:
@@ -311,91 +311,3 @@ class StyleGramEnv(SpacetimeBoundsEnv):
     info = super().record_info()
     info["trust_rwd"] = len(self._history) > self._min_window
     return info
-
-if __name__=="__main__":
-  import argparse
-  parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-  # base
-  parser.add_argument("--task", type=str, default='run', help="task to perform")
-  parser.add_argument("--engine", type=str, default='pybullet', help="simulation engine, select from pybullet and pyPhysX")
-  parser.add_argument("--contact", type=str, default='walk', help="contact type, selected from walk, cartwheel, crawl, roll")
-  parser.add_argument("--bound", type=str, default='data/bounds/default_new_bound.txt', help="bound")
-  parser.add_argument("--noself", dest='sc', action='store_const', const=False, default=True, help="no self-collision")
-  parser.add_argument("--vis", dest='vis', action='store_const', const=True, default=False, help="visualize environment")
-  #FDM0
-  parser.add_argument("--env", type=str, help="select from FDM0, FDM0g, FDM0z, FDM0zg")
-  #Gram matrix
-  parser.add_argument("--style", type=str, help="select from happy_walk, old_walk, zombie_walk, bent_walk")
-  parser.add_argument("--window", type=int, default=75, help="history window for style compare (60Hz)")
-  parser.add_argument("--scale", type=float, default=0.03, help="scale for gram matrix comapre")
-  parser.add_argument("--es", type=float, default=4, help="relative kinematic energy scale")
-  parser.add_argument("--cas", type=float, default=4, help="com Y acceleration scale")
-  parser.add_argument("--acs", type=float, default=10, help="body parts relative acceleration scale")
-  parser.add_argument("--ats", type=float, default=20, help="joint twist acceleration scale")
-  parser.add_argument("--ays", type=float, default=20, help="joint yaw acceleration scale")
-  parser.add_argument("--cvs", type=float, default=4, help="com velocity scale")
-  parser.add_argument("--cvr", type=float, default=1, help="com velocity amplitude ratio to preserve step length")
-  parser.add_argument("--zs", type=float, default=2, help="Z offset scale")
-  parser.add_argument("--abs", dest='abs_acc', action='store_const', const=True, default=False, help="penalize abs acceleration of body parts")
-  parser.add_argument("--avself", dest='avoid_self', action='store_const', const=True, default=False, help="avoid body parts self collision")
-  parser.add_argument("--pca", type=str, default=None, help="select from walk and dance")
-  parser.add_argument("--ckpt", type=str, help="checkpoint")
-  #record
-  parser.add_argument("--record", dest='record', action='store_const', const=True, default=False, help="record motion data")
-  parser.add_argument("--random", dest='random', action='store_const', const=True, default=False, help="random initialize")
-  args = parser.parse_args()
-
-  if args.pca:
-    init_motion_encoder("./model/%s_pca.tar" % args.pca)
-
-  if "z" in args.env:
-    heading_vec = [0, 0, 1]
-  else:
-    heading_vec = [1, 0, 0]
-
-  kwargs = {
-          # base
-          "task": args.task,
-          "seed": 0,
-          "engine": args.engine,
-          "contact": args.contact,
-          "self_collision": args.sc,
-          "enable_draw": args.vis,
-          # FDM0
-          "use_global_root_ori": True,
-          "heading_vec": heading_vec,
-          "use_state_lim": True,
-          "bound": args.bound,
-          "rel_root_pos": not "g" in args.env,
-          "rel_root_ori": False,
-          "rel_endeffector": True,
-          # gram matrix
-          "style": args.style,
-          "window": args.window,
-          "scale": args.scale,
-          "e_scale": args.es,
-          "a_scale": args.acs,
-          "ca_scale": args.cas,
-          "at_scale": args.ats,
-          "ay_scale": args.ays,
-          "cv_scale": args.cvs,
-          "cv_ratio": args.cvr,
-          "z_scale": args.zs,
-          "abs_acc": args.abs_acc,
-          "avoid_self": args.avoid_self,
-          }
-
-  test_env = FDM0GramEnv(**kwargs)
-
-  import torch
-  from model import load_FDM
-  model = load_FDM(args.ckpt)
-
-  data = torch.load(args.ckpt)
-  from env import test_model
-  if "select_set" in data.keys():
-    select_set = data["select_set"]
-    test_model(test_env, model, select_set, args.record, args.random)
-  else:
-    test_model(test_env, model, None, args.record, args.random)
-

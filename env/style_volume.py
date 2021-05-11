@@ -28,7 +28,7 @@ convex_nodes = {
 class StyleVolumeEnv(SpacetimeBoundsEnv):
   def __init__(self, nodes="default", scale=0.12, enlarge=True, **kwargs):
     """
-        Initialize FDM0E environment
+        Initialize volume stylize environment
     """
     super().__init__(**kwargs)
 
@@ -56,65 +56,3 @@ class StyleVolumeEnv(SpacetimeBoundsEnv):
       rwd = r_diff  # discourage volume
 
     return rwd
-
-
-if __name__=="__main__":
-  import argparse
-  parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-  # base
-  parser.add_argument("--task", type=str, default='run', help="task to perform")
-  parser.add_argument("--engine", type=str, default='pybullet', help="simulation engine, select from pybullet and pyPhysX")
-  parser.add_argument("--contact", type=str, default='walk', help="contact type, selected from walk, cartwheel, crawl, roll")
-  parser.add_argument("--noself", dest='sc', action='store_const', const=False, default=True, help="no self-collision")
-  parser.add_argument("--vis", dest='vis', action='store_const', const=True, default=False, help="visualize environment")
-  #FDM0
-  parser.add_argument("--env", type=str, help="select from FDM0, FDM0g, FDM0z, FDM0zg")
-  #FDM0_volume
-  parser.add_argument("--scheme", type=str, help="joint node scheme, select from %s" % str(convex_nodes.keys()))
-  parser.add_argument("--scale", type=float, default=0.12, help="scale of volume energy")
-  parser.add_argument("--enlarge", action='store_const', const=True, default=False)
-  parser.add_argument("--ckpt", type=str, default="torch_policy/jump.tar", help="checkpoint")
-  args = parser.parse_args()
-
-  if "z" in args.env:
-    heading_vec = [0, 0, 1]
-  else:
-    heading_vec = [1, 0, 0]
-
-  kwargs = {
-          # base
-          "task": args.task,
-          "seed": 0,
-          "engine": args.engine,
-          "contact": args.contact,
-          "self_collision": args.sc,
-          "enable_draw": args.vis,
-          # FDM0
-          "use_global_root_ori": True,
-          "heading_vec": heading_vec,
-          "use_state_lim": True,
-          "bound": "./data/bounds/default_new_bound.txt",
-          "rel_root_pos": not "g" in args.env,
-          "rel_root_ori": False,
-          "rel_endeffector": True,
-          # FDM0_joints
-          "joint_nodes": convex_nodes[args.scheme],
-          "scale": args.scale,
-          "enlarge": args.enlarge,
-          }
-
-  test_env = FDM0VolumeEnv(**kwargs)
-
-  import torch
-  from model import load_FDM
-  model = load_FDM(args.ckpt)
-
-  data = torch.load(args.ckpt)
-  if "select_set" in data.keys():
-    select_set = data["select_set"]
-    from env import test_model_select
-    test_model_select(test_env, model, select_set)
-  else:
-    from env import test_model
-    test_model(test_env, model)
-
