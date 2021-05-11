@@ -194,7 +194,7 @@ if __name__=="__main__":
 
   # load model
   import torch
-  from model import load_FDM
+  from model import load_model
   ckpt = args.ckpt
   if args.ckpt:
     ckpt = args.ckpt
@@ -204,7 +204,7 @@ if __name__=="__main__":
     print("please specify checkpoint")
     assert(False)
 
-  model = load_FDM(ckpt)
+  model = load_model(ckpt)
   data = torch.load(ckpt)
   if "select_set" in data.keys():
     select_set = data["select_set"]

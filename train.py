@@ -20,11 +20,11 @@ def init_model(env, model_args, ckpt=None):
   if use_gpu:
     torch.set_default_tensor_type('torch.cuda.FloatTensor')
 
-  from model import Normalizer_FDM, Actor_FDM, Critic
+  from model import Normalizer, Actor, Critic
   GAMMA = file_args["train_args"]["gamma"]
   non_norm = [0] #FMD0
-  s_norm = Normalizer_FDM(s_dim, non_norm)
-  actor = Actor_FDM(s_dim, a_dim, a_min, a_max, a_noise, ref_mem.shape[0])
+  s_norm = Normalizer(s_dim, non_norm)
+  actor = Actor(s_dim, a_dim, a_min, a_max, a_noise, ref_mem.shape[0])
   critic= Critic(s_dim, 0, 1/(1-GAMMA))
 
   actor.set_reference(ref_mem)

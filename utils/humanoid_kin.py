@@ -717,7 +717,7 @@ class HumanoidSkeleton(object):
 
   def targ_pose_to_exp(self, pose):
     """ Convert target pose to exponential map, used as initialization of
-        Actor_FDM reference memory
+        Actor reference memory
 
       Inputs:
         pose        np.array of float, pose of character
