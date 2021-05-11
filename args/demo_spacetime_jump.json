@@ -1,0 +1,8 @@
+{
+  "env_name": "spacetime",
+  "env_args":
+  {
+    "task": "jump"
+  },
+  "ckpt": "data/policies/rwd_elimination/jump.tar"
+}

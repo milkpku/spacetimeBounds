@@ -8,7 +8,7 @@ class SpacetimeBoundsEnv(BaseEnv):
           use_global_root_ori=True,
           heading_vec=[1, 0, 0],
           use_spacetime_bounds=True,
-          bound="data/bounds/default_new_bound.txt",
+          bound="data/bounds/default.txt",
           rel_root_pos=True,
           rel_root_ori=True,
           rel_endeffector=True,

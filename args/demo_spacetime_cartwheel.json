@@ -4,5 +4,6 @@
   {
     "task": "cartwheel",
     "contact": "cartwheel"
-  }
+  },
+  "ckpt": "data/policies/rwd_elimination/cartwheel.tar"
 }

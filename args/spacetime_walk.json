@@ -1,7 +1,0 @@
-{
-  "env_name": "spacetime",
-  "env_args":
-  {
-    "task": "walk"
-  }
-}

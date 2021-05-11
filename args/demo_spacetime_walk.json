@@ -4,5 +4,5 @@
   {
     "task": "walk"
   },
-  "ckpt": "sample_policy/rwd_elimination/walk-alien-FDM0gR-default_tight-imp10-2020-Sep-15-204215_4000.tar"
+  "ckpt": "data/policies/rwd_elimination/walk.tar"
 }

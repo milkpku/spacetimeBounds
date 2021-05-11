@@ -5,5 +5,7 @@
     "task": "bridge",
     "contact": "cartwheel",
     "heading_vec": [0, 0, 1]
-  }
+  },
+
+  "ckpt": "data/policies/ffc/bridge.tar"
 }

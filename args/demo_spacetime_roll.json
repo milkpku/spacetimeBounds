@@ -2,10 +2,10 @@
   "env_name": "spacetime",
   "env_args":
   {
-    "task": "backflip",
+    "task": "roll",
     "model": "humanoid3d",
     "engine": "pybullet",
-    "contact": "walk",
+    "contact": "roll",
     "self_collision": true,
     "enable_draw": false,
     "record_contact": false,
@@ -20,6 +20,5 @@
     "rel_endeffector": true
   },
 
-  "ckpt": "data/policies/rwd_elimination/backflip.tar" 
-
+  "ckpt": "data/policies/rwd_elimination/roll.tar"
 }
