@@ -1,0 +1,28 @@
+{
+  "env_name": "style_volume",
+  "env_args":
+  {
+    "task": "cartwheel",
+    "model": "humanoid3d",
+    "engine": "pybullet",
+    "contact": "cartwheel",
+    "self_collision": true,
+    "enable_draw": false,
+    "record_contact": false,
+    "record_torques": false,
+
+    "use_global_root_ori": true,
+    "heading_vec": [1, 0, 0],
+    "use_spacetime_bounds": true,
+    "bound": "data/bounds/style_cartwheel.txt",
+    "rel_root_pos": false,
+    "rel_root_ori": false,
+    "rel_endeffector": true,
+
+    "nodes": "default",
+    "scale": 0.12,
+    "enlarge": true
+  },
+
+  "ckpt": "data/policies/style_transfer/cartwheel-volume_up.tar"
+}

@@ -1,0 +1,8 @@
+{
+  "env_name": "spacetime",
+  "env_args":
+  {
+    "task": "indian_dance"
+  },
+  "ckpt": "data/policies/challenging/indian_dance.tar"
+}

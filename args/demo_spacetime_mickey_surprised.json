@@ -3,5 +3,6 @@
   "env_args":
   {
     "task": "mickey_surprised"
-  }
+  },
+  "ckpt": "data/policies/challenging/mickey_surprised.tar"
 }

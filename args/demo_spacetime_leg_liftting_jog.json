@@ -1,0 +1,8 @@
+{
+  "env_name": "spacetime",
+  "env_args":
+  {
+    "task": "leg_lifting_jog"
+  },
+  "ckpt": "data/policies/low_quality/leg_lifting_jog.tar"
+}

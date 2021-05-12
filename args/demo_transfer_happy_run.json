@@ -1,0 +1,28 @@
+{
+  "env_name": "style_gram",
+  "env_args":
+  {
+    "task": "run",
+    "model": "humanoid3d",
+    "engine": "pybullet",
+    "contact": "walk",
+    "self_collision": false,
+    "enable_draw": false,
+    "record_contact": false,
+    "record_torques": false,
+
+    "use_global_root_ori": true,
+    "heading_vec": [1, 0, 0],
+    "use_spacetime_bounds": true,
+    "bound": "data/bounds/no_arm_hip.txt",
+    "rel_root_pos": true,
+    "rel_root_ori": false,
+    "rel_endeffector": true,
+
+    "style": "happy_walk",
+    "window": 50
+  },
+
+  "ckpt": "data/policies/style_transfer/run-happy_walk.tar"
+
+}

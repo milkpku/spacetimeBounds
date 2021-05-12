@@ -1,0 +1,11 @@
+{
+  "env_name": "spacetime",
+  "env_args":
+  {
+    "task": "spinkick",
+    "model": "atlas",
+    "self_collision": false,
+    "bound": "data/bounds/atlas_spinkick.txt"
+  },
+  "ckpt": "data/policies/retargetting/atlas_spinkick.tar"
+}

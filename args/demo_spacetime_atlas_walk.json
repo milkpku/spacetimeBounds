@@ -5,6 +5,7 @@
     "task": "walk",
     "model": "atlas",
     "self_collision": false,
-    "bound": "data/bounds/atlas_tight_bound.txt"
-  }
+    "bound": "data/bounds/atlas_walk.txt"
+  },
+  "ckpt": "data/policies/retargetting/atlas_walk.tar"
 }

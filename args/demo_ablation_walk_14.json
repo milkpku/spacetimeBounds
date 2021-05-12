@@ -1,0 +1,8 @@
+{
+  "env_name": "spacetime",
+  "env_args":
+  {
+    "task": "walk"
+  },
+  "ckpt": "data/policies/bound_scale/walk-uniform_14.tar"
+}

@@ -1,0 +1,9 @@
+{
+  "env_name": "spacetime",
+  "env_args":
+  {
+    "task": "cartwheel",
+    "contact": "cartwheel"
+  },
+  "ckpt": "data/policies/bound_scale/cartwheel-uniform_14.tar"
+}

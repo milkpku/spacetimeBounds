@@ -1,0 +1,8 @@
+{
+  "env_name": "spacetime",
+  "env_args":
+  {
+    "task": "backward_jog"
+  },
+  "ckpt": "data/policies/low_quality/backward_jog.tar"
+}
