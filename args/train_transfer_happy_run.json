@@ -1,12 +1,12 @@
 {
-  "env_name": "style_energy",
+  "env_name": "style_gram",
   "env_args":
   {
-    "task": "dance_a",
+    "task": "run",
     "model": "humanoid3d",
     "engine": "pybullet",
     "contact": "walk",
-    "self_collision": true,
+    "self_collision": false,
     "enable_draw": false,
     "record_contact": false,
     "record_torques": false,
@@ -14,13 +14,13 @@
     "use_global_root_ori": true,
     "heading_vec": [1, 0, 0],
     "use_spacetime_bounds": true,
-    "bound": "data/bounds/default_new_bound.txt",
-    "rel_root_pos": false,
+    "bound": "data/bounds/no_arm_hip.txt",
+    "rel_root_pos": true,
     "rel_root_ori": false,
     "rel_endeffector": true,
 
-    "begin_energy": 100,
-    "end_energy": 20
+    "style": "happy_walk",
+    "window": 50
   },
 
   "model_args":
@@ -31,9 +31,11 @@
 
   "train_args":
   {
-    "iter_num": 10000,
+    "iter_num": 30000,
     "gamma": 0.95,
-    "use_importance_sampling": false,
-    "use_state_evolution": false
+    "use_importance_sampling": true,
+    "num_segments": 10,
+    "use_state_evolution": true,
+    "num_selected_elite": 200
   }
 }

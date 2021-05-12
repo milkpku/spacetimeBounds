@@ -31,7 +31,7 @@
 
   "train_args":
   {
-    "iter_num": 6000,
+    "iter_num": 30000,
     "gamma": 0.95,
     "use_importance_sampling": true,
     "num_segments": 10,

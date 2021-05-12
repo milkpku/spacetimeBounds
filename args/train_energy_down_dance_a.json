@@ -1,12 +1,12 @@
 {
-  "env_name": "spacetime",
+  "env_name": "style_energy",
   "env_args":
   {
-    "task": "walk",
-    "model": "atlas",
+    "task": "dance_a",
+    "model": "humanoid3d",
     "engine": "pybullet",
     "contact": "walk",
-    "self_collision": false,
+    "self_collision": true,
     "enable_draw": false,
     "record_contact": false,
     "record_torques": false,
@@ -14,10 +14,13 @@
     "use_global_root_ori": true,
     "heading_vec": [1, 0, 0],
     "use_spacetime_bounds": true,
-    "bound": "data/bounds/atlas_walk.txt",
+    "bound": "data/bounds/style_dance_a.txt",
     "rel_root_pos": false,
     "rel_root_ori": false,
-    "rel_endeffector": true
+    "rel_endeffector": true,
+
+    "begin_energy": 100,
+    "end_energy": 20
   },
 
   "model_args":
@@ -28,11 +31,9 @@
 
   "train_args":
   {
-    "iter_num": 16000,
+    "iter_num": 10000,
     "gamma": 0.95,
-    "use_importance_sampling": true,
-    "num_segments": 20,
-    "use_state_evolution": true,
-    "num_selected_elite": 100
+    "use_importance_sampling": false,
+    "use_state_evolution": false
   }
 }

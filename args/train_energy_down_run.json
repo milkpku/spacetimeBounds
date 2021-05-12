@@ -14,7 +14,7 @@
     "use_global_root_ori": true,
     "heading_vec": [1, 0, 0],
     "use_spacetime_bounds": true,
-    "bound": "data/bounds/run.txt",
+    "bound": "data/bounds/style_run.txt",
     "rel_root_pos": false,
     "rel_root_ori": false,
     "rel_endeffector": true,
