@@ -2,10 +2,10 @@
   "env_name": "spacetime",
   "env_args":
   {
-    "task": "run",
+    "task": "cartwheel",
     "model": "humanoid3d",
     "engine": "pybullet",
-    "contact": "walk",
+    "contact": "cartwheel",
     "self_collision": true,
     "enable_draw": false,
     "record_contact": false,

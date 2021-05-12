@@ -2,7 +2,7 @@
   "env_name": "spacetime",
   "env_args":
   {
-    "task": "run",
+    "task": "backflip",
     "model": "humanoid3d",
     "engine": "pybullet",
     "contact": "walk",
@@ -12,7 +12,7 @@
     "record_torques": false,
 
     "use_global_root_ori": true,
-    "heading_vec": [1, 0, 0],
+    "heading_vec": [0, 0, 1],
     "use_spacetime_bounds": true,
     "bound": "data/bounds/default.txt",
     "rel_root_pos": false,
@@ -28,7 +28,7 @@
 
   "train_args":
   {
-    "iter_num": 6000,
+    "iter_num": 15000,
     "gamma": 0.95,
     "use_importance_sampling": true,
     "num_segments": 10,

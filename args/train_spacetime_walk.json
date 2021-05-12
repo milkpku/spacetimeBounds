@@ -2,7 +2,7 @@
   "env_name": "spacetime",
   "env_args":
   {
-    "task": "run",
+    "task": "walk",
     "model": "humanoid3d",
     "engine": "pybullet",
     "contact": "walk",

@@ -2,7 +2,7 @@
   "env_name": "spacetime",
   "env_args":
   {
-    "task": "run",
+    "task": "run_jump",
     "model": "humanoid3d",
     "engine": "pybullet",
     "contact": "walk",
@@ -28,7 +28,7 @@
 
   "train_args":
   {
-    "iter_num": 6000,
+    "iter_num": 10000,
     "gamma": 0.95,
     "use_importance_sampling": true,
     "num_segments": 10,
