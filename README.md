@@ -2,9 +2,10 @@
 
 ## 1. Introduction
 This repository contains code reproduces results in "Learning and Exploring Motor Skills with Spacetime Bounds"(https://milkpku.github.io/project/spacetime.html). 
+![spacetimeBounds](https://milkpku.github.io/project/spacetime/teaser.svg)
 
 It also contains code implements feature extraction algorithms proposed by "Towards Robust Direction Invariance in Character Animation"(https://milkpku.github.io/project/hairyball.html)
-
+![motionDirection](https://milkpku.github.io/project/hairyball/teaser.svg)
 ## 2. Requirements
 
 ### C++
