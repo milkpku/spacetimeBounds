@@ -50,7 +50,7 @@ export OMP_NUM_THREADS=1
 ```
 before training models.
 
-To run pretrained models:
+To run pretrained models, firstly clone repo from https://github.com/milkpku/spacetimeBounds_policies and copy the contents to path `spacetimeBounds/data/policies`, then run:
 ```bash
 python run_model.py args/demo_spacetime_walk.json
 ```
