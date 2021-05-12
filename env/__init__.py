@@ -3,6 +3,7 @@ from .subproc_vec_env import SubprocVecEnv
 
 from .base import BaseEnv
 from .spacetime import SpacetimeBoundsEnv
+from .spacetime_reg import SpacetimeRegEnv
 from .imitation import ImitationEnv
 from .style_energy import StyleEnergyEnv
 from .style_volume import StyleVolumeEnv
@@ -10,6 +11,7 @@ from .style_gram import StyleGramEnv
 
 env_dict = {
     "spacetime": SpacetimeBoundsEnv,
+    "spacetime_reg": SpacetimeRegEnv,
     "imitation": ImitationEnv,
     "style_energy": StyleEnergyEnv,
     "style_volume": StyleVolumeEnv,
