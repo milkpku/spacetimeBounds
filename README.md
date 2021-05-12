@@ -14,6 +14,7 @@ Clang | 10.0.1 (required)
 PyBullet | 2.89 (required)
 Eigen | 3.3.7 (or later)
 swig | 4.0.2 (or later)
+CMake | 3.11.0 (or later)
 gtest (optional) |
 
 In our experiments, we use Clang to compile C++ code and use swig to build modules for Python.
@@ -43,13 +44,18 @@ make -j8
 You should replace `<path_to_eigen_src_dir>` and `<path_to_python_include_dir>` with your own path to Eigen source and Python include files. 
 
 ## 4. Usage
+Since we use `multiprocessing` in Python, there may be conflicts with OpenMP used by NumPy, so run
+```bash
+export OMP_NUM_THREADS=1
+```
+before training models.
 
-run pretrained model
+To run pretrained models:
 ```bash
 python run_model.py args/demo_spacetime_walk.json
 ```
 
-train model
+To train models:
 ```bash
 python train.py args/train_spacetime_run.json --id spacetime_run
 ```
